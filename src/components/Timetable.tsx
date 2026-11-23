@@ -106,9 +106,9 @@ export function Timetable({ classes, setClasses }: Props) {
                     key={k}
                     type="button"
                     onClick={() => setDraft({ ...draft, color: k })}
-                    aria-label={k}
+                    aria-label={COLORS[k].name}
                     aria-pressed={draft.color === k}
-                    className={`size-6 rounded-full ${COLORS[k].dot} ring-offset-2 ring-offset-white dark:ring-offset-slate-900 ${draft.color === k ? 'ring-2 ring-slate-900 dark:ring-white' : ''}`}
+                    className={`size-6 rounded-full ${COLORS[k].dot} ring-offset-2 ring-offset-white dark:ring-offset-paper-900 ${draft.color === k ? 'ring-2 ring-paper-900 dark:ring-white' : ''}`}
                   />
                 ))}
               </div>
@@ -136,23 +136,23 @@ export function Timetable({ classes, setClasses }: Props) {
             const list = classes.filter((c) => c.day === d).sort((a, b) => toMinutes(a.start) - toMinutes(b.start))
             const isToday = d === today
             return (
-              <section key={d} aria-label={DAYS[d]} className={`rounded-2xl p-3 ${isToday ? 'bg-indigo-50 ring-2 ring-indigo-500 dark:bg-indigo-500/10' : 'bg-slate-100/70 dark:bg-slate-900/60'}`}>
+              <section key={d} aria-label={DAYS[d]} className={`rounded-lg p-3 ${isToday ? 'bg-paper-50 ring-1 ring-tomato-500 dark:bg-paper-900' : 'bg-paper-100/70 dark:bg-paper-900/60'}`}>
                 <div className="mb-3 flex items-center justify-between px-1">
                   <h2 className="font-semibold">
                     <span className="lg:hidden">{DAYS[d]}</span>
                     <span className="hidden lg:inline">{DAYS_SHORT[d]}</span>
                   </h2>
-                  {isToday && <span className="text-xs font-bold uppercase text-indigo-600 dark:text-indigo-400">Today</span>}
+                  {isToday && <span className="text-xs font-bold uppercase text-tomato-600 dark:text-tomato-400">Today</span>}
                 </div>
                 <ul className="space-y-2">
                   {list.map((c) => (
                     <li key={c.id} className={`group card border-l-4 p-3 ${COLORS[c.color].border}`}>
-                      <p className="text-xs font-semibold tabular-nums text-slate-500 dark:text-slate-400">
+                      <p className="text-xs font-semibold tabular-nums text-paper-500 dark:text-paper-400">
                         {formatTime(c.start)} – {formatTime(c.end)}
                       </p>
                       <p className="mt-0.5 font-semibold leading-snug">{c.subject}</p>
                       {c.location && (
-                        <p className="mt-0.5 flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400">
+                        <p className="mt-0.5 flex items-center gap-1 text-xs text-paper-500 dark:text-paper-400">
                           <MapPin className="size-3" /> {c.location}
                         </p>
                       )}
@@ -170,7 +170,7 @@ export function Timetable({ classes, setClasses }: Props) {
                     <button
                       type="button"
                       onClick={() => { setDraft(blank(d)); setError('') }}
-                      className="flex w-full items-center justify-center gap-1 rounded-xl border border-dashed border-slate-300 py-2 text-xs font-medium text-slate-500 hover:border-indigo-400 hover:text-indigo-600 dark:border-slate-700"
+                      className="flex w-full items-center justify-center gap-1 rounded-md border border-dashed border-paper-300 py-2 text-xs font-medium text-paper-500 hover:border-tomato-400 hover:text-tomato-600 dark:border-paper-700"
                     >
                       <Plus className="size-3.5" /> Add
                     </button>

@@ -1,4 +1,4 @@
-import { ArrowRight, CalendarDays, CheckCircle2, Clock, MapPin, Play, Sparkles } from 'lucide-react'
+import { ArrowRight, CalendarDays, CheckCircle2, Clock, MapPin, Play } from 'lucide-react'
 import { COLORS, type Assignment, type ClassSlot, type FocusSession } from '../types'
 import { addDays, DAYS_SHORT, daysUntil, dueLabel, formatTime, isoDate, nowMinutes, startOfWeek, toMinutes, weekdayIndex } from '../lib/date'
 import { formatClock, MODE_LABEL, type FocusTimer } from '../lib/useFocusTimer'
@@ -48,24 +48,21 @@ export function Dashboard({ classes, assignments, sessions, timer, setTab, onLoa
   return (
     <div className="space-y-6">
       <div>
-        <p className="text-sm font-medium text-indigo-600 dark:text-indigo-400">
+        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-paper-500 dark:text-paper-400">
           {new Date().toLocaleDateString(undefined, { weekday: 'long', day: 'numeric', month: 'long' })}
         </p>
-        <h1 className="mt-1 text-2xl font-bold tracking-tight sm:text-3xl">{greeting()} 👋</h1>
-        <p className="mt-1 text-slate-500 dark:text-slate-400">
+        <h1 className="mt-1 text-3xl sm:text-4xl">{greeting()}.</h1>
+        <p className="mt-1 text-paper-500 dark:text-paper-400">
           {todays.length} {todays.length === 1 ? 'class' : 'classes'} today · {dueSoon.length} due this week
-          {overdue > 0 && <span className="font-semibold text-rose-600 dark:text-rose-400"> · {overdue} overdue</span>}
+          {overdue > 0 && <span className="font-semibold text-tomato-600 dark:text-tomato-400"> · {overdue} overdue</span>}
         </p>
       </div>
 
       {isEmpty && (
-        <div className="card flex flex-col items-start gap-4 p-5 sm:flex-row sm:items-center">
-          <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-indigo-100 text-indigo-600 dark:bg-indigo-500/15 dark:text-indigo-300">
-            <Sparkles className="size-5" />
-          </span>
+        <div className="card flex flex-col items-start gap-4 border-l-4 border-l-tomato-500 p-5 sm:flex-row sm:items-center">
           <div className="flex-1">
             <p className="font-semibold">New here? Start with your timetable.</p>
-            <p className="text-sm text-slate-500 dark:text-slate-400">
+            <p className="text-sm text-paper-500 dark:text-paper-400">
               Add your classes and deadlines, or load sample data to look around first. Everything stays in this browser.
             </p>
           </div>
@@ -102,22 +99,22 @@ export function Dashboard({ classes, assignments, sessions, timer, setTab, onLoa
                 return (
                   <li
                     key={c.id}
-                    className={`flex items-center gap-4 rounded-xl border-l-4 p-3 ${color.border} ${color.soft} ${past ? 'opacity-50' : ''}`}
+                    className={`flex items-center gap-4 rounded-md border-l-4 p-3 ${color.border} ${color.soft} ${past ? 'opacity-50' : ''}`}
                   >
                     <div className="w-20 shrink-0 text-sm tabular-nums">
                       <p className="font-semibold">{formatTime(c.start)}</p>
-                      <p className="text-slate-500 dark:text-slate-400">{formatTime(c.end)}</p>
+                      <p className="text-paper-500 dark:text-paper-400">{formatTime(c.end)}</p>
                     </div>
                     <div className="min-w-0 flex-1">
                       <p className="truncate font-semibold">{c.subject}</p>
                       {c.location && (
-                        <p className="flex items-center gap-1 text-sm text-slate-500 dark:text-slate-400">
+                        <p className="flex items-center gap-1 text-sm text-paper-500 dark:text-paper-400">
                           <MapPin className="size-3.5" /> {c.location}
                         </p>
                       )}
                     </div>
-                    {live && <span className="rounded-full bg-emerald-500 px-2 py-0.5 text-xs font-bold text-white">Now</span>}
-                    {!live && i === nextIdx && <span className="rounded-full bg-indigo-600 px-2 py-0.5 text-xs font-bold text-white">Next</span>}
+                    {live && <span className="rounded-full bg-[#5f7a52] px-2 py-0.5 text-xs font-semibold text-paper-50">Now</span>}
+                    {!live && i === nextIdx && <span className="rounded-full border border-paper-900 px-2 py-0.5 text-xs font-semibold dark:border-paper-200">Next</span>}
                   </li>
                 )
               })}
@@ -131,17 +128,17 @@ export function Dashboard({ classes, assignments, sessions, timer, setTab, onLoa
           <p className="mt-1 text-3xl font-bold tabular-nums">
             {Math.floor(weekTotal / 60)}h {weekTotal % 60}m
           </p>
-          <p className="text-sm text-slate-500 dark:text-slate-400">{todayMinutes} min today</p>
+          <p className="text-sm text-paper-500 dark:text-paper-400">{todayMinutes} min today</p>
 
           <div className="mt-4 flex h-24 items-end gap-1.5" role="img" aria-label={`Focus minutes per day: ${week.map((d) => `${d.label} ${d.minutes}`).join(', ')}`}>
             {week.map((d) => (
               <div key={d.label} className="flex flex-1 flex-col items-center gap-1">
                 <div
-                  className={`w-full rounded-md ${d.isToday ? 'bg-indigo-600' : 'bg-indigo-200 dark:bg-indigo-500/30'}`}
+                  className={`w-full rounded-md ${d.isToday ? 'bg-tomato-500' : 'bg-paper-300 dark:bg-paper-700'}`}
                   style={{ height: `${Math.max(4, (d.minutes / maxDay) * 72)}px` }}
                   title={`${d.minutes} min`}
                 />
-                <span className={`text-[0.65rem] ${d.isToday ? 'font-bold' : 'text-slate-500'}`}>{d.label}</span>
+                <span className={`text-[0.65rem] ${d.isToday ? 'font-bold' : 'text-paper-500'}`}>{d.label}</span>
               </div>
             ))}
           </div>
@@ -173,18 +170,18 @@ export function Dashboard({ classes, assignments, sessions, timer, setTab, onLoa
             Enjoy it while it lasts.
           </EmptyState>
         ) : (
-          <ul className="divide-y divide-slate-100 dark:divide-slate-800">
+          <ul className="divide-y divide-paper-100 dark:divide-paper-800">
             {dueSoon.map((a) => {
               const n = daysUntil(a.due)
               return (
                 <li key={a.id} className="flex flex-wrap items-center gap-x-3 gap-y-1 py-3">
                   <div className="min-w-0 flex-1">
                     <p className="font-medium">{a.title}</p>
-                    <p className="text-sm text-slate-500 dark:text-slate-400">{a.subject || 'No subject'}</p>
+                    <p className="text-sm text-paper-500 dark:text-paper-400">{a.subject || 'No subject'}</p>
                   </div>
                   <PriorityBadge priority={a.priority} />
                   <span
-                    className={`text-sm font-semibold ${n < 0 ? 'text-rose-600 dark:text-rose-400' : n <= 1 ? 'text-amber-600 dark:text-amber-400' : 'text-slate-500'}`}
+                    className={`text-sm font-semibold ${n < 0 ? 'text-tomato-600 dark:text-tomato-400' : n <= 1 ? 'text-[#a87f1c] dark:text-[#d8b45a]' : 'text-paper-500'}`}
                   >
                     {dueLabel(a.due)}
                   </span>

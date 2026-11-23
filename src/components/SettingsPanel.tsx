@@ -69,7 +69,7 @@ export function SettingsPanel({ data, onImport }: Props) {
       <div className="space-y-6">
         <section className="card p-5">
           <h2 className="font-semibold">Appearance</h2>
-          <div className="mt-3 inline-flex gap-1 rounded-xl bg-slate-100 p-1 dark:bg-slate-800">
+          <div className="mt-3 inline-flex gap-1 rounded-md bg-paper-200/70 p-1 dark:bg-paper-800">
             {[
               { v: false, label: 'Light', icon: Sun },
               { v: true, label: 'Dark', icon: Moon },
@@ -79,7 +79,7 @@ export function SettingsPanel({ data, onImport }: Props) {
                 type="button"
                 aria-pressed={dark === v}
                 onClick={() => setTheme(v)}
-                className={`flex items-center gap-2 rounded-lg px-4 py-1.5 text-sm font-medium ${dark === v ? 'bg-white shadow-sm dark:bg-slate-950' : 'text-slate-500'}`}
+                className={`flex items-center gap-2 rounded-lg px-4 py-1.5 text-sm font-medium ${dark === v ? 'bg-paper-50 dark:bg-paper-950' : 'text-paper-500'}`}
               >
                 <Icon className="size-4" /> {label}
               </button>
@@ -89,7 +89,7 @@ export function SettingsPanel({ data, onImport }: Props) {
 
         <section className="card p-5">
           <h2 className="font-semibold">Your data</h2>
-          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+          <p className="mt-1 text-sm text-paper-500 dark:text-paper-400">
             Everything is saved in this browser only. Nothing is sent to a server. Download a backup to move your planner to another device.
           </p>
           <p className="mt-3 text-sm">
@@ -99,7 +99,7 @@ export function SettingsPanel({ data, onImport }: Props) {
             <button type="button" className="btn btn-primary" onClick={exportData}>
               <Download className="size-4" /> Download backup
             </button>
-            <button type="button" className="btn border border-slate-300 dark:border-slate-700" onClick={() => fileRef.current?.click()}>
+            <button type="button" className="btn border border-paper-300 dark:border-paper-700" onClick={() => fileRef.current?.click()}>
               <Upload className="size-4" /> Restore backup
             </button>
             <input
@@ -124,9 +124,9 @@ export function SettingsPanel({ data, onImport }: Props) {
           )}
         </section>
 
-        <p className="text-center text-xs text-slate-500">
+        <p className="text-center text-xs text-paper-500">
           Study Planner is free and open source.{' '}
-          <a className="font-medium text-indigo-600 hover:underline dark:text-indigo-400" href="https://github.com/Miaoricle/study-planner" target="_blank" rel="noreferrer">
+          <a className="font-medium text-tomato-600 hover:underline dark:text-tomato-400" href="https://github.com/Miaoricle/study-planner" target="_blank" rel="noreferrer">
             View on GitHub
           </a>
         </p>

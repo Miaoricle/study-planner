@@ -1,10 +1,11 @@
 export const COLORS = {
-  indigo: { dot: 'bg-indigo-500', soft: 'bg-indigo-50 dark:bg-indigo-500/10', border: 'border-l-indigo-500', text: 'text-indigo-700 dark:text-indigo-300' },
-  emerald: { dot: 'bg-emerald-500', soft: 'bg-emerald-50 dark:bg-emerald-500/10', border: 'border-l-emerald-500', text: 'text-emerald-700 dark:text-emerald-300' },
-  amber: { dot: 'bg-amber-500', soft: 'bg-amber-50 dark:bg-amber-500/10', border: 'border-l-amber-500', text: 'text-amber-700 dark:text-amber-300' },
-  rose: { dot: 'bg-rose-500', soft: 'bg-rose-50 dark:bg-rose-500/10', border: 'border-l-rose-500', text: 'text-rose-700 dark:text-rose-300' },
-  sky: { dot: 'bg-sky-500', soft: 'bg-sky-50 dark:bg-sky-500/10', border: 'border-l-sky-500', text: 'text-sky-700 dark:text-sky-300' },
-  violet: { dot: 'bg-violet-500', soft: 'bg-violet-50 dark:bg-violet-500/10', border: 'border-l-violet-500', text: 'text-violet-700 dark:text-violet-300' },
+  // Keys are stored in saved timetables, so they stay the same; only the look changes.
+  indigo: { name: 'Ink blue', dot: 'bg-[#3d5a73]', soft: 'bg-[#3d5a73]/8 dark:bg-[#7d9bb5]/12', border: 'border-l-[#3d5a73] dark:border-l-[#7d9bb5]', text: 'text-[#3d5a73] dark:text-[#9db5ca]' },
+  emerald: { name: 'Sage', dot: 'bg-[#5f7a52]', soft: 'bg-[#5f7a52]/8 dark:bg-[#93ad84]/12', border: 'border-l-[#5f7a52] dark:border-l-[#93ad84]', text: 'text-[#4d6642] dark:text-[#a9c09b]' },
+  amber: { name: 'Mustard', dot: 'bg-[#c49a2c]', soft: 'bg-[#c49a2c]/10 dark:bg-[#d8b45a]/12', border: 'border-l-[#c49a2c] dark:border-l-[#d8b45a]', text: 'text-[#8a6a18] dark:text-[#dfc077]' },
+  rose: { name: 'Tomato', dot: 'bg-tomato-500', soft: 'bg-tomato-500/8 dark:bg-tomato-400/12', border: 'border-l-tomato-500 dark:border-l-tomato-400', text: 'text-tomato-700 dark:text-tomato-300' },
+  sky: { name: 'Teal', dot: 'bg-[#2f7a78]', soft: 'bg-[#2f7a78]/8 dark:bg-[#6fb0ad]/12', border: 'border-l-[#2f7a78] dark:border-l-[#6fb0ad]', text: 'text-[#25615f] dark:text-[#8cc4c1]' },
+  violet: { name: 'Plum', dot: 'bg-[#7a4a68]', soft: 'bg-[#7a4a68]/8 dark:bg-[#b48aa4]/12', border: 'border-l-[#7a4a68] dark:border-l-[#b48aa4]', text: 'text-[#6a3f5a] dark:text-[#c9a3bb]' },
 } as const
 
 export type ColorKey = keyof typeof COLORS

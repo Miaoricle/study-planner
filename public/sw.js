@@ -1,5 +1,5 @@
 // Offline support: pages are network-first (so updates arrive), static assets are cache-first.
-const CACHE = 'study-planner-v1'
+const CACHE = 'study-planner-v2'
 const SHELL = ['./', './index.html', './manifest.webmanifest', './favicon.svg', './icon-192.png', './icon-512.png']
 
 self.addEventListener('install', (event) => {

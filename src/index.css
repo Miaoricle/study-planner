@@ -3,7 +3,33 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: 'Fraunces', ui-serif, Georgia, serif;
+
+  /* warm paper neutrals */
+  --color-paper-50: #fdfbf6;
+  --color-paper-100: #f5f0e6;
+  --color-paper-200: #e8e0d1;
+  --color-paper-300: #d4cab7;
+  --color-paper-400: #a69d8c;
+  --color-paper-500: #7b7366;
+  --color-paper-600: #5f584e;
+  --color-paper-700: #48423a;
+  --color-paper-800: #322e29;
+  --color-paper-900: #25221e;
+  --color-paper-950: #1a1815;
+
+  /* tomato accent (pomodoro = tomato) */
+  --color-tomato-50: #fdf2ee;
+  --color-tomato-100: #f9e0d7;
+  --color-tomato-200: #f2bfae;
+  --color-tomato-300: #e99a81;
+  --color-tomato-400: #df7352;
+  --color-tomato-500: #d0532f;
+  --color-tomato-600: #b94324;
+  --color-tomato-700: #98361e;
+  --color-tomato-800: #7a2d1b;
+  --color-tomato-900: #5c2416;
 }
 
 html {
@@ -14,29 +40,42 @@ html.dark {
 }
 
 body {
-  @apply bg-slate-50 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100;
+  @apply bg-paper-100 font-sans text-paper-900 antialiased dark:bg-paper-950 dark:text-paper-100;
+}
+
+h1,
+h2 {
+  @apply font-serif;
+  font-optical-sizing: auto;
+  letter-spacing: -0.01em;
+}
+h1 {
+  @apply font-semibold;
+}
+h2 {
+  @apply font-semibold;
 }
 
 @utility card {
-  @apply rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900;
+  @apply rounded-lg border border-paper-200 bg-paper-50 dark:border-paper-800 dark:bg-paper-900;
 }
 
 @utility input {
-  @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/30 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100;
+  @apply w-full rounded-md border border-paper-300 bg-paper-50 px-3 py-2 text-sm text-paper-900 outline-none transition placeholder:text-paper-400 focus:border-paper-900 focus:ring-1 focus:ring-paper-900 dark:border-paper-700 dark:bg-paper-950 dark:text-paper-100 dark:focus:border-paper-200 dark:focus:ring-paper-200;
 }
 
 @utility btn {
-  @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 disabled:cursor-not-allowed disabled:opacity-50;
+  @apply inline-flex items-center justify-center gap-2 rounded-md px-3.5 py-2 text-sm font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tomato-500 disabled:cursor-not-allowed disabled:opacity-50;
 }
 
 @utility btn-primary {
-  @apply bg-indigo-600 text-white hover:bg-indigo-500;
+  @apply bg-paper-900 text-paper-50 hover:bg-tomato-600 dark:bg-paper-100 dark:text-paper-950 dark:hover:bg-tomato-400;
 }
 
 @utility btn-ghost {
-  @apply text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white;
+  @apply text-paper-600 hover:bg-paper-200/60 hover:text-paper-900 dark:text-paper-300 dark:hover:bg-paper-800 dark:hover:text-paper-50;
 }
 
 @utility label {
-  @apply mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400;
+  @apply mb-1 block text-xs font-semibold uppercase tracking-wide text-paper-500 dark:text-paper-400;
 }

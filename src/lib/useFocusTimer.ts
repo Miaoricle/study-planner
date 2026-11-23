@@ -79,7 +79,7 @@ export function useFocusTimer(settings: Settings, onFocusComplete: (minutes: num
         const done = cycle + 1
         setCycle(done)
         setMode(done % settings.longEvery === 0 ? 'long' : 'short')
-        notify('Focus session complete 🎉', 'Nice work. Time for a break.')
+        notify('Focus session complete', 'Nice work. Time for a break.')
       } else {
         setMode('focus')
         notify('Break over', 'Ready for another focus session?')

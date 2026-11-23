@@ -39,7 +39,7 @@ export function Assignments({ assignments, setAssignments, subjects }: Props) {
   const done = assignments.filter((a) => a.done).sort((a, b) => b.due.localeCompare(a.due))
 
   const groups = [
-    { title: 'Overdue', items: pending.filter((a) => daysUntil(a.due) < 0), tone: 'text-rose-600 dark:text-rose-400' },
+    { title: 'Overdue', items: pending.filter((a) => daysUntil(a.due) < 0), tone: 'text-tomato-600 dark:text-tomato-400' },
     { title: 'This week', items: pending.filter((a) => daysUntil(a.due) >= 0 && daysUntil(a.due) <= 7), tone: '' },
     { title: 'Later', items: pending.filter((a) => daysUntil(a.due) > 7), tone: '' },
   ].filter((g) => g.items.length > 0)
@@ -85,16 +85,16 @@ export function Assignments({ assignments, setAssignments, subjects }: Props) {
         <div className="mb-6">
           <div className="mb-1.5 flex justify-between text-sm">
             <span className="font-medium">Progress</span>
-            <span className="tabular-nums text-slate-500">{progress}%</span>
+            <span className="tabular-nums text-paper-500">{progress}%</span>
           </div>
-          <div className="h-2 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800" role="progressbar" aria-valuenow={progress} aria-valuemin={0} aria-valuemax={100} aria-label="Assignments completed">
-            <div className="h-full rounded-full bg-emerald-500 transition-all" style={{ width: `${progress}%` }} />
+          <div className="h-2 overflow-hidden rounded-full bg-paper-200 dark:bg-paper-800" role="progressbar" aria-valuenow={progress} aria-valuemin={0} aria-valuemax={100} aria-label="Assignments completed">
+            <div className="h-full rounded-full bg-[#5f7a52] transition-all" style={{ width: `${progress}%` }} />
           </div>
         </div>
       )}
 
       {pending.length === 0 && (
-        <EmptyState icon={<ClipboardList className="size-8" />} title={assignments.length ? 'All caught up 🎉' : 'No assignments yet'}>
+        <EmptyState icon={<ClipboardList className="size-8" />} title={assignments.length ? 'All caught up' : 'No assignments yet'}>
           {assignments.length ? 'Every assignment is done.' : 'Add one above and it will show up here, sorted by due date.'}
         </EmptyState>
       )}
@@ -102,10 +102,10 @@ export function Assignments({ assignments, setAssignments, subjects }: Props) {
       <div className="space-y-6">
         {groups.map((g) => (
           <section key={g.title}>
-            <h2 className={`mb-2 text-sm font-semibold uppercase tracking-wide ${g.tone || 'text-slate-500'}`}>
+            <h2 className={`mb-2 text-sm font-semibold uppercase tracking-wide ${g.tone || 'text-paper-500'}`}>
               {g.title} <span className="font-normal">({g.items.length})</span>
             </h2>
-            <ul className="card divide-y divide-slate-100 dark:divide-slate-800">
+            <ul className="card divide-y divide-paper-100 dark:divide-paper-800">
               {g.items.map((a) => (
                 <Row key={a.id} a={a} onToggle={toggle} onRemove={remove} />
               ))}
@@ -115,11 +115,11 @@ export function Assignments({ assignments, setAssignments, subjects }: Props) {
 
         {done.length > 0 && (
           <section>
-            <button type="button" className="mb-2 flex items-center gap-1 text-sm font-semibold uppercase tracking-wide text-slate-500" onClick={() => setShowDone((s) => !s)} aria-expanded={showDone}>
+            <button type="button" className="mb-2 flex items-center gap-1 text-sm font-semibold uppercase tracking-wide text-paper-500" onClick={() => setShowDone((s) => !s)} aria-expanded={showDone}>
               <ChevronDown className={`size-4 transition ${showDone ? '' : '-rotate-90'}`} /> Completed ({done.length})
             </button>
             {showDone && (
-              <ul className="card divide-y divide-slate-100 dark:divide-slate-800">
+              <ul className="card divide-y divide-paper-100 dark:divide-paper-800">
                 {done.map((a) => (
                   <Row key={a.id} a={a} onToggle={toggle} onRemove={remove} />
                 ))}
@@ -140,12 +140,12 @@ function Row({ a, onToggle, onRemove }: { a: Assignment; onToggle: (id: string) 
         type="checkbox"
         checked={a.done}
         onChange={() => onToggle(a.id)}
-        className="size-5 shrink-0 cursor-pointer accent-emerald-600"
+        className="size-5 shrink-0 cursor-pointer accent-[#5f7a52]"
         aria-label={`Mark "${a.title}" as ${a.done ? 'not done' : 'done'}`}
       />
       <div className="min-w-0 flex-1">
-        <p className={`font-medium ${a.done ? 'text-slate-400 line-through' : ''}`}>{a.title}</p>
-        <p className="text-sm text-slate-500 dark:text-slate-400">
+        <p className={`font-medium ${a.done ? 'text-paper-400 line-through' : ''}`}>{a.title}</p>
+        <p className="text-sm text-paper-500 dark:text-paper-400">
           {a.subject && <>{a.subject} · </>}
           {formatDate(a.due)}
         </p>
@@ -154,7 +154,7 @@ function Row({ a, onToggle, onRemove }: { a: Assignment; onToggle: (id: string) 
         <>
           <PriorityBadge priority={a.priority} />
           <span
-            className={`hidden w-32 text-right text-sm font-semibold sm:block ${n < 0 ? 'text-rose-600 dark:text-rose-400' : n <= 1 ? 'text-amber-600 dark:text-amber-400' : 'text-slate-500'}`}
+            className={`hidden w-32 text-right text-sm font-semibold sm:block ${n < 0 ? 'text-tomato-600 dark:text-tomato-400' : n <= 1 ? 'text-[#a87f1c] dark:text-[#d8b45a]' : 'text-paper-500'}`}
           >
             {dueLabel(a.due)}
           </span>
