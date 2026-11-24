@@ -1,4 +1,4 @@
-# 📚 Study Planner
+# Study Planner
 
 A free, no-signup study planner for students. Keep your **weekly timetable**, **assignment deadlines** and a **Pomodoro focus timer** in one place.
 
